@@ -1,0 +1,20 @@
+{
+  "branding": {
+    "label": "برندینگ",
+    "subcategories": [
+      { "key": "logo", "label": "طراحی لوگو" },
+      { "key": "identity", "label": "هویت بصری" },
+      { "key": "brandbook", "label": "بوک برند" }
+    ]
+  },
+  "print": {
+    "label": "طراحی چاپی",
+    "subcategories": [
+      { "key": "poster", "label": "پوستر و بروشور" },
+      { "key": "packaging", "label": "بسته‌بندی" },
+      { "key": "stationery", "label": "ست اداری" },
+      { "key": "businesscard", "label": "کارت ویزیت" },
+      { "key": "catalog", "label": "کاتالوگ" }
+    ]
+  }
+}
