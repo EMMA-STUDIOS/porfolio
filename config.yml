@@ -1,0 +1,99 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: "en"
+
+collections:
+  - name: "projects"
+    label: "پروژه‌ها"
+    files:
+      - name: "projects"
+        label: "لیست پروژه‌ها"
+        file: "data/projects.json"
+        fields:
+          - label: "پروژه‌ها"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - label: "عنوان پروژه"
+                name: "title"
+                widget: "string"
+              - label: "دسته اصلی"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "برندینگ", value: "branding" }
+                  - { label: "طراحی چاپی", value: "print" }
+              - label: "کلید زیرشاخه"
+                name: "subcategory"
+                widget: "string"
+                hint: "باید دقیقاً همون کلیدی باشه که توی فیلترها تعریف کردی (مثلاً logo، poster)"
+              - label: "آیکون"
+                name: "icon"
+                widget: "select"
+                options:
+                  - { label: "لوگو", value: "logo" }
+                  - { label: "هویت بصری", value: "identity" }
+                  - { label: "بوک برند", value: "brandbook" }
+                  - { label: "پوستر و بروشور", value: "poster" }
+                  - { label: "بسته‌بندی", value: "packaging" }
+                  - { label: "ست اداری", value: "stationery" }
+                  - { label: "کارت ویزیت", value: "businesscard" }
+                  - { label: "کاتالوگ", value: "catalog" }
+              - label: "تصاویر پروژه"
+                name: "images"
+                widget: "list"
+                required: false
+                field:
+                  label: "تصویر"
+                  name: "image"
+                  widget: "image"
+
+  - name: "filters"
+    label: "فیلترها"
+    files:
+      - name: "filters"
+        label: "زیرشاخه‌های فیلتر"
+        file: "data/filters.json"
+        fields:
+          - label: "برندینگ"
+            name: "branding"
+            widget: "object"
+            fields:
+              - { label: "عنوان دسته", name: "label", widget: "string" }
+              - label: "زیرشاخه‌ها"
+                name: "subcategories"
+                widget: "list"
+                summary: "{{label}}"
+                fields:
+                  - { label: "کلید (انگلیسی، بدون فاصله)", name: "key", widget: "string" }
+                  - { label: "برچسب نمایشی", name: "label", widget: "string" }
+          - label: "طراحی چاپی"
+            name: "print"
+            widget: "object"
+            fields:
+              - { label: "عنوان دسته", name: "label", widget: "string" }
+              - label: "زیرشاخه‌ها"
+                name: "subcategories"
+                widget: "list"
+                summary: "{{label}}"
+                fields:
+                  - { label: "کلید (انگلیسی، بدون فاصله)", name: "key", widget: "string" }
+                  - { label: "برچسب نمایشی", name: "label", widget: "string" }
+
+  - name: "contact"
+    label: "اطلاعات تماس"
+    files:
+      - name: "contact"
+        label: "تماس"
+        file: "data/contact.json"
+        fields:
+          - { label: "ایمیل", name: "email", widget: "string" }
+          - { label: "لینک اینستاگرام", name: "instagram", widget: "string" }
+          - { label: "لینک لینکدین", name: "linkedin", widget: "string" }
+          - { label: "لینک بیهانس", name: "behance", widget: "string" }
