@@ -96,4 +96,39 @@ collections:
           - { label: "ایمیل", name: "email", widget: "string" }
           - { label: "لینک اینستاگرام", name: "instagram", widget: "string" }
           - { label: "لینک لینکدین", name: "linkedin", widget: "string" }
-          - { label: "لینک بیهانس", name: "behance", widget: "string" }
+          - { label: "لینک تلگرام", name: "telegram", widget: "string" }
+
+  - name: "site"
+    label: "متن‌های سایت"
+    files:
+      - name: "site"
+        label: "هیرو، بیو، ابزارها، مراحل کاری"
+        file: "data/site.json"
+        fields:
+          - label: "هیرو (صفحه اصلی)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "خط اول", name: "line1", widget: "string" }
+              - { label: "خط دوم", name: "line2", widget: "string" }
+              - { label: "زیرعنوان", name: "subtitle", widget: "text" }
+          - label: "درباره من"
+            name: "about"
+            widget: "object"
+            fields:
+              - label: "پاراگراف‌های بیو"
+                name: "bio"
+                widget: "list"
+              - { label: "در دسترس هستم؟", name: "available", widget: "boolean", default: true }
+              - { label: "متن وضعیت در دسترس بودن", name: "availableText", widget: "string" }
+              - { label: "رزومه (فایل PDF)", name: "resume", widget: "file", required: false }
+          - label: "ابزارها و مهارت‌ها"
+            name: "tools"
+            widget: "list"
+          - label: "مراحل کاری"
+            name: "process"
+            widget: "list"
+            fields:
+              - { label: "شماره", name: "num", widget: "string" }
+              - { label: "عنوان", name: "title", widget: "string" }
+              - { label: "توضیح", name: "description", widget: "text" }

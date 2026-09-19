@@ -1021,11 +1021,11 @@
       <div class="swatch"></div>
       <div class="swatch"></div>
     </div>
-    <h1 class="hero-heading">
+    <h1 class="hero-heading" id="heroHeading">
       <span class="hero-line"><span class="hero-word" style="--i:0">طراح</span> <span class="hero-word" style="--i:1">گرافیک،</span></span>
       <span class="hero-line"><span class="hero-word" style="--i:2">در</span> <span class="hero-word" style="--i:3">خدمت</span> <span class="hero-word" style="--i:4">برند</span> <span class="hero-word" style="--i:5">و</span> <span class="hero-word" style="--i:6">چاپ.</span></span>
     </h1>
-    <p class="role">متمرکز بر برندینگ و طراحی‌های چاپی — از ساخت هویت بصری تا رساندنش به روی کاغذ.</p>
+    <p class="role" id="heroSubtitle">متمرکز بر برندینگ و طراحی‌های چاپی — از ساخت هویت بصری تا رساندنش به روی کاغذ.</p>
     <div class="cta-row">
       <a href="#works" class="btn btn-primary btn-wave">
         <span class="wave-fill" aria-hidden="true">
@@ -1168,7 +1168,7 @@
     <div class="contact-modal-socials">
       <a href="#" id="contactInstagram">اینستاگرام</a>
       <a href="#" id="contactLinkedin">لینکدین</a>
-      <a href="#" id="contactBehance">بیهانس</a>
+      <a href="#" id="contactTelegram">تلگرام</a>
     </div>
   </div>
 </div>
@@ -1180,7 +1180,7 @@
       if(emailLink && c.email){ emailLink.href = 'mailto:' + c.email; emailLink.textContent = c.email; }
       var ig = document.getElementById('contactInstagram'); if(ig && c.instagram) ig.href = c.instagram;
       var li = document.getElementById('contactLinkedin'); if(li && c.linkedin) li.href = c.linkedin;
-      var be = document.getElementById('contactBehance'); if(be && c.behance) be.href = c.behance;
+      var tg = document.getElementById('contactTelegram'); if(tg && c.telegram) tg.href = c.telegram;
     }).catch(function(err){ console.error(err); });
   })();
 </script>
@@ -1462,6 +1462,32 @@
         if(e.key === 'Escape' && modal.classList.contains('is-open')) closeProject();
       });
     }
+  })();
+</script>
+
+<script>
+  (function(){
+    fetch('data/site.json').then(function(r){ return r.json(); }).then(function(site){
+      if(!site.hero) return;
+      var idx = 0;
+      function words(text){
+        return text.split(' ').map(function(w){
+          var s = '<span class="hero-word" style="--i:' + idx + '">' + w + '</span>';
+          idx++;
+          return s;
+        }).join(' ');
+      }
+      var headingEl = document.getElementById('heroHeading');
+      var subtitleEl = document.getElementById('heroSubtitle');
+      if(headingEl && site.hero.line1 && site.hero.line2){
+        headingEl.innerHTML =
+          '<span class="hero-line">' + words(site.hero.line1) + '</span>' +
+          '<span class="hero-line">' + words(site.hero.line2) + '</span>';
+      }
+      if(subtitleEl && site.hero.subtitle){
+        subtitleEl.textContent = site.hero.subtitle;
+      }
+    }).catch(function(err){ console.error(err); });
   })();
 </script>
 
